@@ -1,0 +1,232 @@
+/**
+ *  Body & Page layout
+ */
+
+body {
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+    margin: 0;
+    height: 100vh;
+}
+
+header {
+    position: relative;
+    background-color: #34495e;
+	  z-index: 1;
+}
+
+main {
+    position: relative;
+    background-color: #ecf0f1;
+}
+
+header, main { height: 100vh; }
+
+@media screen and (max-width: 890px) {
+    header {
+        height: 150px;
+        padding-top: 1.4em;
+    }
+}
+
+@media screen and (min-width: 891px) {
+    header, main { float: left; }
+
+    header { width: 22vw; }
+
+    main { width: 78vw; }
+
+    #hgroup {
+        position: absolute;
+        top: 50%;
+        margin-top: -67.8px;
+    }
+}
+
+/**
+ * Header
+ */
+
+h1, h3 {
+    color: white;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 700;
+    margin-bottom: 0.4em;
+}
+
+h3 {
+    font-weight: 200;
+    font-size: 0.9em;
+}
+
+#hgroup {
+    width: 100%;
+    text-align: center;
+}
+
+#newGameButton {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    border: none;
+    padding: 17px;
+	margin: 0;
+    font-size: 0.8em;
+    font-weight: 700;
+    cursor: pointer;
+	text-transform: uppercase;
+	
+	transition: all 200ms ease-in-out;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+}
+
+#newGameButton:focus { outline: none; }
+
+#newGameButton:hover { background-color: #ddd; }
+
+/**
+ * Main: Tic Tac Toe
+ */
+
+#tictactoe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    height: 85vmin;
+    width: 85vmin;
+    margin: auto;
+}
+
+@media screen and (max-width: 890px) {
+    #tictactoe {
+        height: 70vmin;
+        width: 70vmin;
+    }
+}
+
+.square {
+    width: calc(33.33% - 6px);
+    height: calc(33.33% - 6px);
+    float: left;
+    cursor: pointer;
+}
+
+/** Central column **/
+.square[data-col="1"] {
+    border-left: 6px #abb7b7 solid;
+    border-right: 6px #abb7b7 solid;
+}
+
+/** Central row **/
+.square[data-row="1"] {
+    border-top: 6px #abb7b7 solid;
+    border-bottom: 6px #abb7b7 solid;
+}
+
+.square:not(:empty) { cursor: auto; }
+
+/* SVG */
+
+#tictactoe svg { margin: 3px; }
+
+svg path {
+    fill: none;
+    stroke-width: 8px;
+	
+	-webkit-animation: svg_draw 0.225s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	animation: svg_draw 0.225s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+svg path:last-of-type {
+	-webkit-animation-delay: 0.125s;
+	animation-delay: 0.125s;
+}
+
+svg.circle path {
+	stroke: #3498db;
+    stroke-dasharray: 301.635;
+	stroke-dashoffset: 301.635;
+}
+
+svg.cross path {
+	stroke: #fdd835;
+    stroke-dasharray: 135.764;
+	stroke-dashoffset: 135.764;
+}
+
+/* SVG Animation */
+
+@keyframes svg_draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/**
+ * Modal
+ */
+
+#modal {
+	opacity: 0;
+	pointer-events: none;
+	
+	z-index: 1;
+	overflow: hidden;
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+	transition: all 200ms ease-in-out;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+}
+
+#modal.visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/* Background (blur o blackish) */
+@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+	#modal {
+    	-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+	}
+}
+
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+	#modal { background-color: rgba(0,0,0,0.6); }
+}
+
+#modal-content {
+	position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 200px);
+    width: 400px;
+    background-color: rgba(255,255,255,0.9);
+	
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#modal-content h2 {
+	font-weight: 400;
+    text-align: center;
+}
+
+#result-symbol {
+	text-align: center;
+    margin: 0.83em auto;
+}
+
+#result-symbol > svg { height: 120px; }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400,700">
+    
+    <script src="logic.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="hgroup">
+            <h1>Tic Tac Toe</h1>
+            <h3>An interactive game!</h3>
+        </div>
+
+        <button type="button" id="newGameButton">New game!</button>
+    </header>
+
+    <main>
+		<section id="modal">
+			<div id="modal-content">
+				<h2 id="result-text">Result</h2>
+				<figure id="result-symbol"></figure>
+			</div>
+		</section>
+       
+        <figure id="tictactoe">
+            <div class="square" data-row="0" data-col="0"></div>
+            <div class="square" data-row="0" data-col="1"></div>
+            <div class="square" data-row="0" data-col="2"></div>
+            <div class="square" data-row="1" data-col="0"></div>
+            <div class="square" data-row="1" data-col="1"></div>
+            <div class="square" data-row="1" data-col="2"></div>
+            <div class="square" data-row="2" data-col="0"></div>
+            <div class="square" data-row="2" data-col="1"></div>
+            <div class="square" data-row="2" data-col="2"></div>
+        </figure>
+    </main>
+</body>
+
+</html>
